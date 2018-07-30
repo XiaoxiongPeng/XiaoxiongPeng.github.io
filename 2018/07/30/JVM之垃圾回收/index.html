@@ -108,21 +108,27 @@
 
 
 
-  <meta name="keywords" content="Peng Xiaoxiong">
-<meta property="og:type" content="website">
-<meta property="og:title" content="记录生活">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="内存垃圾回收是JVM运行过程中非常重要的一个环节，对JVM的性能起着关键性的作用。垃圾收集器有许多种，它们各有特色，在一个场景中选择一个合适的垃圾收集器能让JVM的性能更上层楼。">
+<meta name="keywords" content="Peng Xiaoxiong">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM之垃圾回收">
+<meta property="og:url" content="http://yoursite.com/2018/07/30/JVM之垃圾回收/index.html">
 <meta property="og:site_name" content="记录生活">
+<meta property="og:description" content="内存垃圾回收是JVM运行过程中非常重要的一个环节，对JVM的性能起着关键性的作用。垃圾收集器有许多种，它们各有特色，在一个场景中选择一个合适的垃圾收集器能让JVM的性能更上层楼。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://yoursite.com/2018/07/30/JVM之垃圾回收/堆内存的空间划分.png">
+<meta property="og:updated_time" content="2018-07-30T15:18:14.622Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="记录生活">
+<meta name="twitter:title" content="JVM之垃圾回收">
+<meta name="twitter:description" content="内存垃圾回收是JVM运行过程中非常重要的一个环节，对JVM的性能起着关键性的作用。垃圾收集器有许多种，它们各有特色，在一个场景中选择一个合适的垃圾收集器能让JVM的性能更上层楼。">
+<meta name="twitter:image" content="http://yoursite.com/2018/07/30/JVM之垃圾回收/堆内存的空间划分.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/07/30/JVM之垃圾回收/"/>
 
 
 
@@ -132,7 +138,7 @@
   };
 </script>
 
-  <title>Archive | 记录生活</title>
+  <title>JVM之垃圾回收 | 记录生活</title>
   
 
 
@@ -179,7 +185,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -228,7 +234,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
   </li>
@@ -316,180 +322,214 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/07/30/JVM之垃圾回收/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Peng Xiaoxiong">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="记录生活">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">JVM之垃圾回收
+              
+            
+          </h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-07-30 20:03:11 / Modified: 23:18:14" itemprop="dateCreated datePublished" datetime="2018-07-30T20:03:11+08:00">2018-07-30</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
           
-        
-        Um..! 3 posts in total. Keep on posting.
-      </span>
-      
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/JVM/" itemprop="url" rel="index"><span itemprop="name">JVM</span></a></span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2018">2018</h1>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/07/30/JVM之垃圾回收/" itemprop="url">
-              
-                <span itemprop="name">JVM之垃圾回收</span>
-              
-            </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-07-30T20:03:11+08:00"
-              content="2018-07-30" >
-          07-30
-        </time>
-      </div>
+          
 
-    </header>
-  </article>
+          
 
+        </div>
+      </header>
+    
 
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/07/27/JVM内存模型/" itemprop="url">
-              
-                <span itemprop="name">JVM之内存模型</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-07-27T00:00:00+08:00"
-              content="2018-07-27" >
-          07-27
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/07/19/第一篇 博客开篇词/" itemprop="url">
-              
-                <span itemprop="name">第一篇 博客开篇词</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-07-19T00:00:00+08:00"
-              content="2018-07-19" >
-          07-19
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <p>   内存垃圾回收是JVM运行过程中非常重要的一个环节，对JVM的性能起着关键性的作用。垃圾收集器有许多种，它们各有特色，在一个场景中选择一个合适的垃圾收集器能让JVM的性能更上层楼。<br>   <a id="more"></a></p>
+<h1 id="可达性分析算法"><a href="#可达性分析算法" class="headerlink" title="可达性分析算法"></a>可达性分析算法</h1><p>   当一个对象从GC roots不可达时，就认为这个对象是没有用的可以被回收。GC roots包括以下几种：</p>
+<ul>
+<li>虚拟机栈中(栈帧中的本地变量表)引用的对象</li>
+<li>方法区中类静态属性引用的对象</li>
+<li>方法区中常量引用的对象</li>
+<li>本地方法栈中JNI引用的对象</li>
+</ul>
+<p>GC Roots可达的对象就不会被回收了吗？不，这还要看是什么样的引用类型。Java中有四种引用类型：</p>
+<ul>
+<li>强引用类型(strong reference)<br>代码中存在如Object o=new Object(),o就是强引用，只要引用还在，这个对象就不会被回收。</li>
+<li>软引用类型(soft reference)<br>软引用常用在缓存中，当内存不够用时，GC会回收软引用引用的对象。当系统即将要发生内存溢出之前异常之前，将会把这些对象列入回收范围中进行二次回收，若这次回收后还是没有足够的内存，才会抛出内存溢出异常。</li>
+<li>弱引用类型(weak reference)<br>弱引用是比软引用更弱的引用，被弱引用引用的对象只能存活到下一次GC之前，每次GC都会回收弱引用的对象，不管内存是否足够。</li>
+<li>虚引用类型(phantom reference)<br>虚引用是最弱的引用，任何时候从虚引用获取对象都是null，给对象设置虚引用的目的只有一个，那就是对象被回收时收到系统通知。</li>
+</ul>
+<h1 id="安全点（区域）和Stop-The-World"><a href="#安全点（区域）和Stop-The-World" class="headerlink" title="安全点（区域）和Stop The World"></a>安全点（区域）和Stop The World</h1><p>   只有当所有线程都到了安全点(区域)，“Stop the world”后才能进行GC。</p>
+<h1 id="回收过程"><a href="#回收过程" class="headerlink" title="回收过程"></a>回收过程</h1><p>   对象被回收会经过两次标记。第一次标记是是筛选出对象是否要执行finalize()方法，如果对象没有override它的finalize()方法或者它的finalize()方法已经被系统执行过，这两种情况都会被视为“没必要执行”，反之，就和把对象放入一个名为F-Queue的队列中，并在稍后由一个虚拟机创建的低优先级的Finalizer线程执行，但是不承诺等待finalize()执行完。<br>   finalize()是对象在GC过程中拯救自己的唯一机会，并且只能有一次(因为一个对象的一生中finalize()只会被系统调用一次)。在finalize()中把自己与存活的对象建立起关联(如把this关键字赋给某个对象的成员变量)，那么在第二次标记中这个对象将会被移出“即将回收”集合。<br>   两次标记完成后，这一次的回收工作就完成了。</p>
+<h1 id="什么时候触发GC"><a href="#什么时候触发GC" class="headerlink" title="什么时候触发GC"></a>什么时候触发GC</h1><p>不同的“年龄代”的对象回收的频率不一样。堆一般划分为Eden，Survivor和Tenured/Old空间：</p>
+<img src="/2018/07/30/JVM之垃圾回收/堆内存的空间划分.png">
+<p>老年代空间比新生代空间大，新生代空间分为Eden和两个Survivor空间，比例为8：1：1。</p>
+<ul>
+<li>新生代GC(Minor GC)：指在新生代发生的垃圾回收动作，因为Java对象大多具有朝生夕死的特点，所以Minor GC 非常频繁，一般回收速度也很快。Minor GC采用复制收集算法进行回收，每次清理Eden和一个Survivor区，将存活的对象复制到另一个Survivor区，下一次Minor GC清理Eden和另一个Survivor区，总是有一个Survivor区是空的用来保存下次Minor GC的存活对象，如果这个Survivor区空间不够，那么就放入老年代中，老年代都不够那么就进行一个Major GC。在新生代经过数次(默认15，可配置)回收都还存活的对象就可以进入老年代。</li>
+<li>老年代GC(Major GC)：指发生在老年代的GC，出现了Major GC，通常伴随着Minor GC(但非绝对，在ParallelScavenge收集器的收集策略里就有直接进行Major GC的策略选择过程)。Major GC速度一般比Minor GC慢10倍以上。</li>
+<li>Full GC<br> 通常进行Major GC时就会进行Full GC，Full GC除了回收新生代、老年代和永久代(方法区)外，还会顺便回收(释放)直接内存。<h2 id="Minor-GC-触发机制"><a href="#Minor-GC-触发机制" class="headerlink" title="Minor GC 触发机制"></a>Minor GC 触发机制</h2>当年轻代满时就会触发Minor GC，这里的年轻代指的是Eden区，Survivor区满不会引发GC。Survivor区满时就把多余的对象放到老年代，大对象直接放到老年代。老年代有空间分配担保机制。<h2 id="Major-GC-触发机制"><a href="#Major-GC-触发机制" class="headerlink" title="Major GC 触发机制"></a>Major GC 触发机制</h2>当老年代满时会引发Major GC<h2 id="Full-GC-触发机制"><a href="#Full-GC-触发机制" class="headerlink" title="Full GC 触发机制"></a>Full GC 触发机制</h2>引发Full GC的条件如下<br>（1）调用System.gc时，系统建议执行Full GC，但是不必然执行<br>（2）老年代空间不足<br>（3）方法区空间不足<br>（4）通过Minor GC后进入老年代的平均大小大于老年代的可用内存<br>（5）由Eden区、From Space区向To Space区复制时，对象大小大于To Space可用内存，则把该对象转存到老年代，且老年代的可用内存小于该对象大小<h1 id="回收方法区"><a href="#回收方法区" class="headerlink" title="回收方法区"></a>回收方法区</h1>方法区又称为永久代，但是永久代不代表不会被回收，只是GC很少在这个区域进行。在这里通常是回收常量和卸载类。<h1 id="回收直接内存"><a href="#回收直接内存" class="headerlink" title="回收直接内存"></a>回收直接内存</h1>发生Full GC时。<h1 id="垃圾收集器"><a href="#垃圾收集器" class="headerlink" title="垃圾收集器"></a>垃圾收集器</h1>垃圾收集器种类繁多，每个都有自己的特色。在不同的场景下选择不同的的垃圾收集器能使JVM的性能最优。</li>
+</ul>
+<p>参考：<br>1.<a href="https://blog.csdn.net/qq_34707744/article/details/79288787" target="_blank" rel="noopener">https://blog.csdn.net/qq_34707744/article/details/79288787</a><br>2.<a href="https://segmentfault.com/a/1190000004926898?_ea=1734786#articleHeader19" target="_blank" rel="noopener">https://segmentfault.com/a/1190000004926898?_ea=1734786#articleHeader19</a><br>3.<a href="https://blog.csdn.net/antony9118/article/details/51425581" target="_blank" rel="noopener">https://blog.csdn.net/antony9118/article/details/51425581</a><br>4.<a href="https://blog.csdn.net/u010796790/article/details/52213708" target="_blank" rel="noopener">https://blog.csdn.net/u010796790/article/details/52213708</a><br>5.<a href="https://blog.csdn.net/lqp276/article/details/52249438" target="_blank" rel="noopener">https://blog.csdn.net/lqp276/article/details/52249438</a></p>
 
       
-
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/27/JVM内存模型/" rel="next" title="JVM之内存模型">
+                <i class="fa fa-chevron-left"></i> JVM之内存模型
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -510,8 +550,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -586,6 +635,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#可达性分析算法"><span class="nav-number">1.</span> <span class="nav-text">可达性分析算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安全点（区域）和Stop-The-World"><span class="nav-number">2.</span> <span class="nav-text">安全点（区域）和Stop The World</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#回收过程"><span class="nav-number">3.</span> <span class="nav-text">回收过程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#什么时候触发GC"><span class="nav-number">4.</span> <span class="nav-text">什么时候触发GC</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Minor-GC-触发机制"><span class="nav-number">4.1.</span> <span class="nav-text">Minor GC 触发机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Major-GC-触发机制"><span class="nav-number">4.2.</span> <span class="nav-text">Major GC 触发机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Full-GC-触发机制"><span class="nav-number">4.3.</span> <span class="nav-text">Full GC 触发机制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#回收方法区"><span class="nav-number">5.</span> <span class="nav-text">回收方法区</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#回收直接内存"><span class="nav-number">6.</span> <span class="nav-text">回收直接内存</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#垃圾收集器"><span class="nav-number">7.</span> <span class="nav-text">垃圾收集器</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -720,6 +785,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.3.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.3.0"></script>
+
+
 
   
 

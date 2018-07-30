@@ -111,7 +111,7 @@
   <meta name="description" content="Java虚拟机在运行时会把其所管理的内存区域划分为若干个不同的数据区域，这些区域随着JVM的启动而创建，有的随着用户线程的启动和结束而创建和销毁。">
 <meta name="keywords" content="Peng Xiaoxiong">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JVM 内存模型">
+<meta property="og:title" content="JVM之内存模型">
 <meta property="og:url" content="http://yoursite.com/2018/07/27/JVM内存模型/index.html">
 <meta property="og:site_name" content="记录生活">
 <meta property="og:description" content="Java虚拟机在运行时会把其所管理的内存区域划分为若干个不同的数据区域，这些区域随着JVM的启动而创建，有的随着用户线程的启动和结束而创建和销毁。">
@@ -120,9 +120,9 @@
 <meta property="og:image" content="http://yoursite.com/2018/07/27/JVM内存模型/Java对象的创建过程.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/07/27/JVM内存模型/句柄方式.jpg">
 <meta property="og:image" content="http://yoursite.com/2018/07/27/JVM内存模型/指针方式.jpg">
-<meta property="og:updated_time" content="2018-07-28T17:51:02.565Z">
+<meta property="og:updated_time" content="2018-07-30T15:19:37.918Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JVM 内存模型">
+<meta name="twitter:title" content="JVM之内存模型">
 <meta name="twitter:description" content="Java虚拟机在运行时会把其所管理的内存区域划分为若干个不同的数据区域，这些区域随着JVM的启动而创建，有的随着用户线程的启动和结束而创建和销毁。">
 <meta name="twitter:image" content="http://yoursite.com/2018/07/27/JVM内存模型/JVM内存模型.png">
 
@@ -141,7 +141,7 @@
   };
 </script>
 
-  <title>JVM 内存模型 | 记录生活</title>
+  <title>JVM之内存模型 | 记录生活</title>
   
 
 
@@ -362,7 +362,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">JVM 内存模型
+          <h1 class="post-title" itemprop="name headline">JVM之内存模型
               
             
           </h1>
@@ -404,7 +404,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-07-29 01:51:02" itemprop="dateModified" datetime="2018-07-29T01:51:02+08:00">2018-07-29</time>
+                <time title="Modified: 2018-07-30 23:19:37" itemprop="dateModified" datetime="2018-07-30T23:19:37+08:00">2018-07-30</time>
               
             
           </span>
@@ -460,7 +460,7 @@
 <img src="/2018/07/27/JVM内存模型/JVM内存模型.png" title="JVM内存模型">
 <p>上图是JDK7的虚拟机规范，在JDK8中方法区被metaspace(元数据空间)取代(从方法区(或者元数据区)的用途来看，“元数据区”的命名更贴切)。</p>
 <h1 id="程序计数器"><a href="#程序计数器" class="headerlink" title="程序计数器"></a>程序计数器</h1><p>   程序计数器是一个记录着当前线程所执行的字节码的行号指示器，Java代码编译后的字节码在未经过JIT编译前是通过“字节码解释器”进行解释执行，简单的工作原理为解释器读取装载入内存的字节码，安装顺序执行指令。假设只有一个线程，那么不需要程序计数器也能实现顺序执行指令，但是由于是多线程，那么线程间切换执行时就需要记录当前线程执行的位置，下次切换回来后能继续执行下去，所以每一个线程都拥有一个程序计数器。<br>   但是只有执行Java代码时程序计数器才会有值，如执行native方法时，程序计数器为空(undefined)，因为native方法是Java通过JNI直接调用本地C/C++等代码，本地方法的内存分配不属于JVM的管理范畴。<br>   程序计数器很小，也是jvm内存模型中唯一没有定义OutOfMemoryError的内存区域。</p>
-<h1 id="Java虚拟机栈"><a href="#Java虚拟机栈" class="headerlink" title="Java虚拟机栈"></a>Java虚拟机栈</h1><p>   虚拟机栈是用于描述Java方法执行的内存模型。<br>   每个Java方法执行时，会创建一个栈帧(stack frame)，栈帧的结构分为局部变量表，操作数栈，动态链接和方法出口几个部分。我们常说的”堆内存，栈内存“中的栈内存通常指的就是虚拟机栈。<br>   方法调用时，创建栈帧并压入虚拟机栈，方法结束时，栈帧出栈并销毁。<br>   若单个线程请求的栈深度大于虚拟机允许的深度会抛出StackOverFlowError。JVM为每个线程的虚拟机栈分配一定大小的内存(-Xss参数)，因此虚拟机栈能容纳的栈帧数量是有限的，不断进栈而不出栈(如无限递归)会耗尽虚拟机栈的空间。<br>   不同于StackOverFlowError，当虚拟机栈无法再申请到内存空间时会发生OutOfMemoryError，虚拟机栈的最大空间约等于JVM进程能占用的最大内存空间(依赖于操作系统，如Windows进程能占用的内存空间最大为2GB)，当整个JVM进程的内存不够用时，这时虚拟机栈想要再申请内存，那么就会发生OutOfMemoryError了。<br>   虚拟机栈也是线程隔离的，一个线程有一个虚拟机栈。</p>
+<h1 id="Java虚拟机栈"><a href="#Java虚拟机栈" class="headerlink" title="Java虚拟机栈"></a>Java虚拟机栈</h1><p>   虚拟机栈是用于描述Java方法执行的内存模型。<br>   每个Java方法执行时，会创建一个栈帧(stack frame)，栈帧的结构分为局部变量表，操作数栈，动态链接和方法出口几个部分。我们常说的”堆内存，栈内存“中的栈内存通常指的就是虚拟机栈。<br>   方法调用时，创建栈帧并压入虚拟机栈，方法结束时，栈帧出栈并销毁。<br>   若单个线程请求的栈深度大于虚拟机允许的深度会抛出StackOverFlowError。JVM为每个线程的虚拟机栈分配一定大小的内存(-Xss参数)，因此虚拟机栈能容纳的栈帧数量是有限的，不断进栈而不出栈(如无限递归)会耗尽虚拟机栈的空间。<br>   不同于StackOverFlowError，当虚拟机栈无法再申请到内存空间时会发生OutOfMemoryError，虚拟机栈的最大空间约等于JVM进程能占用的最大内存空间(依赖于操作系统，如32位Windows进程能占用的内存空间最大为2GB)，当整个JVM进程的内存不够用时，这时虚拟机栈想要再申请内存，那么就会发生OutOfMemoryError了。<br>   虚拟机栈也是线程隔离的，一个线程有一个虚拟机栈。</p>
 <h1 id="本地方法栈"><a href="#本地方法栈" class="headerlink" title="本地方法栈"></a>本地方法栈</h1><p>   本地方法栈的功能和虚拟机栈类似，只不过一个为Java方法服务，一个为本地方法服务。不同的JVM实现对本地方法栈的实现不一样，如HotSpot选择合并了虚拟机栈和本地方法栈。</p>
 <h1 id="Java堆"><a href="#Java堆" class="headerlink" title="Java堆"></a>Java堆</h1><p>   对于大多数应用来说，堆是虚拟机中内存管理中的最大的一块。<br>   堆是所有线程共享的，所有的对象实例和数组都放到这里(但随着JIT的发展和逃逸分析技术的逐渐成熟，所有对象都在堆上也不那么绝对了)。堆是GC管理的主要区域，由于堆是所有线程共享的，在内存分配时需要同步会造成一些性能开销，所以为了性能Java堆中也可能会划分出线程私有的分配缓冲区(Thread Local Allocation Buffer，TLAB，默认开启，可通过开关配置)。</p>
 <h1 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h1><p>   方法区和Java堆一样是线程共享的，用于存储已被JVM加载的类信息、常量、静态变量、即时编译器编译后的代码数据等。虽然JVM规范将其描述为堆的一个逻辑分区，但是它却有一个别名叫Non-heap。Hotspot把垃圾回收扩展至方法区并使用永久代实现，但是把方法区称为永久代是不恰当的。方法区可以选择不实现垃圾回收，相对而言，GC在这里比较少出现，在这里垃圾回收的目标主要是常量回收和类的卸载，这部分的回收是有必要的。</p>
@@ -524,6 +524,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/07/30/JVM之垃圾回收/" rel="prev" title="JVM之垃圾回收">
+                JVM之垃圾回收 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -601,7 +605,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-count">3</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
